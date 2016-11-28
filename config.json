@@ -1,0 +1,5 @@
+{
+	"pin_fan" : 22,
+	"pin_waterPump" : 23,
+	"pin_lights" : 24
+}
