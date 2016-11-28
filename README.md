@@ -9,5 +9,8 @@ Frameworks/APIs used:
   - jQuery : https://jquery.com/
   - Composer : https://getcomposer.org/ (used to install PiPHP)
   - 
-  
-  :)
+
+Missing:
+  - temp/hum sensor reading. (curently random values ar generated)
+
+:)
