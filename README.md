@@ -11,6 +11,6 @@ Frameworks/APIs used:
   - 
 
 Missing:
-  - temp/hum sensor reading. (curently random values ar generated)
+  - temp/hum sensor reading. (curently random values are generated)
 
 :)
