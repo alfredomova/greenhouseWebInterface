@@ -1,4 +1,4 @@
-# Greenhouse Web Interfacre
+# Greenhouse Web Interface
 
 Web interface to control Fan, Water pump and Lights in a greenhouse, also to check temperature & humidity.
 
