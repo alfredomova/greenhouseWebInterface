@@ -2,8 +2,12 @@
 
 Web interface to control Fan, Water pump and Lights in a greenhouse, also to check temperature & humidity.
 
-Framworks used:
+Frameworks/APIs used:
   - Bootstrap : http://getbootstrap.com/
-  - Bootrstp Switch : http://www.bootstrap-switch.org/
+  - Bootstrap Switch : http://www.bootstrap-switch.org/
   - PiPHP : https://github.com/PiPHP
+  - jQuery : https://jquery.com/
+  - Composer : https://getcomposer.org/ (used to install PiPHP)
   - 
+  
+  :)
