@@ -1,8 +1,5 @@
 /**
 * Greenhouse Web Interface.
-*
-* Autor: Alfredo Morales
-* 
 */
 var config ={};
 
