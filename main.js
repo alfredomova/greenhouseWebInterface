@@ -2,6 +2,7 @@
 * Greenhouse Web Interface.
 */
 var config ={};
+var tempMode = 'C';
 
 $.getJSON("config.json", function(json) {
 	config = json; 
@@ -15,8 +16,6 @@ $( document ).ready(function() {
 	$("#checkWaterPump").bootstrapSwitch();
 	$("#checkLight").bootstrapSwitch();
 	$("#tempMode").bootstrapSwitch();
-
-	var tempMode = 'C';
 
 	/** Temperature Mode */
 	$('#tempMode').on('switchChange.bootstrapSwitch', function (e, data) {
@@ -40,7 +39,7 @@ $( document ).ready(function() {
 				if(result.result == 'fail'){
 					$("#msgDiv").show().html("Fail to change switch's state.").delay(5000).fadeOut('slow');
 				}
-				//loadSwitchStates();
+				// loadSwitchStates();
 			}
 		});
 	}
@@ -69,7 +68,7 @@ $( document ).ready(function() {
 	window.setInterval(function(){
 		loadTempHum();
 		loadSwitchStates();
-	}, 15000);
+	}, 5000);
 	
 });
 
@@ -79,15 +78,12 @@ function loadTempHum(){
 		url: 'temp_hum.php',
 		dataType: 'json',
 		success: function(data){
-
 			var temp  = "";
-
 			if(tempMode == 'C'){
 				temp = data.temperature + '°C';
 			} else {
 				temp = (((data.temperature * 9 ) / 5) + 32) + '°F';
 			}
-
 			$('#progressTemp').css('width', data.temperature +'%').attr('aria-valuenow', data.temperature).html(temp);
 			$('#progressHum').css('width', data.humidity +'%').attr('aria-valuenow', data.humidity).html(data.humidity + '%');
 		}
@@ -96,35 +92,31 @@ function loadTempHum(){
 
 /** retrive actual state of the switches */
 function loadSwitchStates(){
+
 	$.ajax({
-		url: 'switch_states2.php',
-		dataType: 'json',
-		success: function(data){
+		url: 'states.php',
+		type: "GET",
+		dataType: "json",
+		success: function(result){
 
-			if(data['pin_' + config.pin_fan] == 0){
-				$('#checkFan').bootstrapSwitch('state', false); 
-			} else {
-				$('#checkFan').bootstrapSwitch('state', true); 
-			}
+			var flag_fan = (result['pin_' + config.pin_fan] == 1);
+			$('#checkFan').bootstrapSwitch('state', flag_fan); 
 
-			if(data['pin_' + config.pin_waterPump] == 0){
-				$('#checkWaterPump').bootstrapSwitch('state', false); 
-			} else {
-				$('#checkWaterPump').bootstrapSwitch('state', true); 
-			}
 
-			if(data['pin_' + config.pin_lights] == 0){
-				$('#checkLight').bootstrapSwitch('state', false); 
-			} else {
-				$('#checkLight').bootstrapSwitch('state', true); 
-			}
+			var flag_waterPump = (result['pin_' + config.pin_waterPump] == 1);
+			$('#checkWaterPump').bootstrapSwitch('state', flag_waterPump); 
+
+
+			var flag_light = (result['pin_' + config.pin_lights] == 1);
+			$('#checkLight').bootstrapSwitch('state', flag_light); 
 
 		}
-	});	
+	});
+
 }
 
+/** update values.*/
 function refresh(){
 	loadTempHum();
 	loadSwitchStates();
 }
-
