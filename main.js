@@ -88,6 +88,22 @@ function loadTempHum(){
 			$('#progressHum').css('width', data.humidity +'%').attr('aria-valuenow', data.humidity).html(data.humidity + '%');
 		}
 	});	
+	
+	$.ajax({
+		url: 'bmp085.php',
+		dataType: 'json',
+		success: function(data){
+			var temp  = "";
+			if(tempMode == 'C'){
+				temp = data.temperature.C + '°C';
+			} else {
+				temp = data.temperature.F + '°F';
+			}
+			$('#BMP085_progressTemp').css('width', data.temperature +'%').attr('aria-valuenow', data.temperature).html(temp);
+			$('#BMP085_pressure').val(data.hpa);
+		}
+	});	
+	
 }
 
 /** retrive actual state of the switches */

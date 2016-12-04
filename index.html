@@ -122,12 +122,25 @@
 		
 			<div class="panel panel-default">
 				
-				<div class="panel-heading">BMP085</div>
+				<div class="panel-heading">BMP085 Sensor</div>
 				
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="BMP085_progressTemp">Temperature</label>
+
+								<div class="progress">
+									<div id="BMP085_progressTemp" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="BMP085_pressure">Pressure</label>
+
+								<input type="text" readOnly id="BMP085_pressure" />
+							</div>
 						</div>
 					</div>
 				</div>
