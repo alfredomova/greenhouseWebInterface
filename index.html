@@ -33,8 +33,14 @@
 
 				<div id="navbar" class="navbar-collapse collapse">
 				
+					<form class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="checkbox" id="tempMode" checked="no" data-size="mini" data-on-color="default" data-on-text="°C" data-off-text="°F" onSwitchChange="tempModeChange">
+						</div>
+					</form>
+				
 					<ul class="nav navbar-nav navbar-right">
-       						<li><a href="#" onClick="refresh();"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Reload</a></li>
+       					<li><a href="#" onClick="refresh();"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Reload</a></li>
 					</ul>
 
 				</div>
@@ -80,11 +86,14 @@
 						</div>
 					</div>
 					
-					<div class="row">
-						<div class="col-md-12">
-							&nbsp;
-						</div>
-					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				
+				<div class="panel-heading">Temp Sensors</div>
+				
+				<div class="panel-body">
 					
 					<div class="row">
 						<div class="col-md-6">
@@ -102,18 +111,9 @@
 									<label for="progressTemp">Temperature</label>
 
 								<div class="progress">
-									<div id="progressTemp" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+									<div id="progressTemp" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="35"></div>
 								</div>
 							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							&nbsp;
-						</div>
-						<div class="col-md-6">
-							<input type="checkbox" id="tempMode" checked="no" data-size="mini" data-on-color="default" data-on-text="°C" data-off-text="°F" onSwitchChange="tempModeChange">
 						</div>
 					</div>
 
@@ -131,7 +131,7 @@
 								<label for="BMP085_progressTemp">Temperature</label>
 
 								<div class="progress">
-									<div id="BMP085_progressTemp" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+									<div id="BMP085_progressTemp" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="35"></div>
 								</div>
 							</div>
 						</div>
@@ -139,7 +139,7 @@
 							<div class="form-group">
 								<label for="BMP085_pressure">Pressure</label>
 
-								<input type="text" readOnly id="BMP085_pressure" />
+								<p id="BMP085_pressure"></p>
 							</div>
 						</div>
 					</div>

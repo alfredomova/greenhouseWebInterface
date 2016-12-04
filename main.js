@@ -16,7 +16,7 @@ $( document ).ready(function() {
 	$("#checkWaterPump").bootstrapSwitch();
 	$("#checkLight").bootstrapSwitch();
 	$("#tempMode").bootstrapSwitch();
-
+	
 	/** Temperature Mode */
 	$('#tempMode').on('switchChange.bootstrapSwitch', function (e, data) {
 		if(data){
@@ -93,14 +93,17 @@ function loadTempHum(){
 		url: 'bmp085.php',
 		dataType: 'json',
 		success: function(data){
-			var temp  = "";
+			var temp  = 0;
+			var temp_s  = "";
 			if(tempMode == 'C'){
-				temp = data.temperature.C + '°C';
+				temp = data.temperature.C;
+				temp_s = data.temperature.C + '°C';
 			} else {
-				temp = data.temperature.F + '°F';
+				temp = data.temperature.F;
+				temp_s = data.temperature.F + '°F';
 			}
-			$('#BMP085_progressTemp').css('width', data.temperature +'%').attr('aria-valuenow', data.temperature).html(temp);
-			$('#BMP085_pressure').val(data.hpa);
+			$('#BMP085_progressTemp').css('width', temp +'%').attr('aria-valuenow', temp).html(temp_s);
+			$('#BMP085_pressure').html(data.hpa + " hPa<br/>" + data.seaHpa + " hPa @ Sea level");
 		}
 	});	
 	
