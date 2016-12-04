@@ -1,10 +1,10 @@
 <?php
 
-$state_22 = file_get_contents("http://10.1.10.35:8000/GPIO/22/value");
+$state_22 = file_get_contents("http://localhost:8000/GPIO/22/value");
 
-$state_23 = file_get_contents("http://10.1.10.35:8000/GPIO/23/value");
+$state_23 = file_get_contents("http://localhost:8000/GPIO/23/value");
 
-$state_24 = file_get_contents("http://10.1.10.35:8000/GPIO/24/value");
+$state_24 = file_get_contents("http://localhost:8000/GPIO/24/value");
 
 ?>
 {
