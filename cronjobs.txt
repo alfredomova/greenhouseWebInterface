@@ -1,0 +1,4 @@
+
+# PYTHON SCRIPT EACH 10 MIN.
+
+*/10 * * * * /usr/bin/python script.py
