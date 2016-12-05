@@ -1,14 +1,14 @@
 
 <?php
 
-$hpa = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/pressure/hpa");
-$pa = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/pressure/pa");
+$hpa = file_get_contents("http://localhost:8000/devices/bmp/sensor/pressure/hpa");
+$pa = file_get_contents("http://localhost:8000/devices/bmp/sensor/pressure/pa");
 
-$seaHpa = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/pressure/sea/hpa");
-$seaPa = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/pressure/sea/pa");
+$seaHpa = file_get_contents("http://localhost:8000/devices/bmp/sensor/pressure/sea/hpa");
+$seaPa = file_get_contents("http://localhost:8000/devices/bmp/sensor/pressure/sea/pa");
 
-$temp_c = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/temperature/c");
-$temp_f = file_get_contents("http://10.1.10.36:8000/devices/bmp/sensor/temperature/f");
+$temp_c = file_get_contents("http://localhost:8000/devices/bmp/sensor/temperature/c");
+$temp_f = file_get_contents("http://localhost:8000/devices/bmp/sensor/temperature/f");
 
 ?>
 {

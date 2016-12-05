@@ -1,22 +1,22 @@
 <?php
 
-        require_once 'vendor/autoload.php';
+	require_once 'vendor/autoload.php';
 
-        use PiPHP\GPIO\GPIO;
-        use PiPHP\GPIO\Pin\PinInterface;
+	use PiPHP\GPIO\GPIO;
+	use PiPHP\GPIO\Pin\PinInterface;
 
 	if (PHP_SAPI === 'cli') {
 		$pin = $argv[1];
 		$state = $argv[2];
 	} else {
 		$pin = $_GET['pin'];
-        	$state = $_GET['state'];
+		$state = $_GET['state'];
 	}
 
-        $gpio = new GPIO();
+	$gpio = new GPIO();
 
-        $pin_switch = $gpio->getOutputPin((int)$pin);
-        $pin_switch->setValue((int)$state);
+	$pin_switch = $gpio->getOutputPin((int)$pin);
+	$pin_switch->setValue((int)$state);
 
 	$current_state = $pin_switch->getValue();
 

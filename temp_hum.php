@@ -1,5 +1,8 @@
 <?php
 	//exec("gpio read 1", $status);
+
+	// TODO
+
 	$temp = rand(1,100);
 	$hum = rand(1,100);
 ?>
