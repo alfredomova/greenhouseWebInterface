@@ -30,7 +30,7 @@ $( document ).ready(function() {
 	function chageState(pin, data){
 		var state = data ? 1 : 0;
 		$.ajax({
-			url: 'change_switch_state.php',
+			url: 'php/change_switch_state.php',
 			data : {
 				"pin" : pin,
 				"state": state
@@ -75,7 +75,7 @@ $( document ).ready(function() {
 /** retrive temperature & humidity */
 function loadTempHum(){
 	$.ajax({
-		url: 'temp_hum.php',
+		url: 'php/temp_hum.php',
 		dataType: 'json',
 		success: function(data){
 			var temp  = "";
@@ -90,7 +90,7 @@ function loadTempHum(){
 	});	
 	
 	$.ajax({
-		url: 'bmp085.php',
+		url: 'php/bmp085.php',
 		dataType: 'json',
 		success: function(data){
 			var temp  = 0;
@@ -113,7 +113,7 @@ function loadTempHum(){
 function loadSwitchStates(){
 
 	$.ajax({
-		url: 'states.php',
+		url: 'php/states.php',
 		type: "GET",
 		dataType: "json",
 		success: function(result){
