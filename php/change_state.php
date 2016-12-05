@@ -14,6 +14,7 @@
         $url .= $state;
 
         $ch = curl_init( $url );
+        # sudo apt-get install php5-curl
 
         curl_setopt( $ch, CURLOPT_POST, 1);
         curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);

@@ -15,6 +15,7 @@ $( document ).ready(function() {
 	$("#checkFan").bootstrapSwitch();
 	$("#checkWaterPump").bootstrapSwitch();
 	$("#checkLight").bootstrapSwitch();
+	$("#checkOther").bootstrapSwitch();
 	$("#tempMode").bootstrapSwitch();
 	
 	/** Temperature Mode */
@@ -28,9 +29,9 @@ $( document ).ready(function() {
 	});
 
 	function chageState(pin, data){
-		var state = data ? 1 : 0;
+		var state = data ? 0 : 1;
 		$.ajax({
-			url: 'php/change_switch_state.php',
+			url: 'php/change_state.php',
 			data : {
 				"pin" : pin,
 				"state": state
@@ -57,6 +58,11 @@ $( document ).ready(function() {
 	/** Fan Switch */
 	$('#checkFan').on('switchChange.bootstrapSwitch', function (e, data) {
 		chageState(config.pin_fan, data);
+	});
+	
+	/** Other Switch */
+	$('#checkOther').on('switchChange.bootstrapSwitch', function (e, data) {
+		chageState(config.pin_other, data);
 	});
 
 	/** Cargar y Actualizar cada 5 seg. Temperatura y Humedad */
@@ -118,17 +124,17 @@ function loadSwitchStates(){
 		dataType: "json",
 		success: function(result){
 
-			var flag_fan = (result['pin_' + config.pin_fan] == 1);
+			var flag_fan = (result['pin_' + config.pin_fan] == 0);
 			$('#checkFan').bootstrapSwitch('state', flag_fan); 
 
-
-			var flag_waterPump = (result['pin_' + config.pin_waterPump] == 1);
+			var flag_waterPump = (result['pin_' + config.pin_waterPump] == 0);
 			$('#checkWaterPump').bootstrapSwitch('state', flag_waterPump); 
 
-
-			var flag_light = (result['pin_' + config.pin_lights] == 1);
+			var flag_light = (result['pin_' + config.pin_lights] == 0);
 			$('#checkLight').bootstrapSwitch('state', flag_light); 
 
+			var flag_other = (result['pin_' + config.pin_other] == 0);
+			$('#checkOther').bootstrapSwitch('state', flag_other); 
 		}
 	});
 

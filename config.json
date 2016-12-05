@@ -1,5 +1,6 @@
 {
 	"pin_fan" : 22,
 	"pin_waterPump" : 23,
-	"pin_lights" : 24
+	"pin_lights" : 24,
+	"pin_other" : 25
 }
