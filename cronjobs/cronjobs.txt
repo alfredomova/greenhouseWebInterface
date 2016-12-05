@@ -1,4 +1,7 @@
 
 # PYTHON SCRIPT EACH 10 MIN.
 
-*/10 * * * * /usr/bin/python /var/www/html/temp_press_save.py
+# sudo apt-get install gnome-schedule
+# crontab -e
+
+*/10 * * * * /usr/bin/python /var/www/html/cronjobs/temp_press_save.py
