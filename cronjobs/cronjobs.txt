@@ -5,3 +5,5 @@
 # crontab -e
 
 */10 * * * * /usr/bin/python /var/www/html/cronjobs/temp_press_save.py
+
+*/10 * * * * /usr/bin/python /var/www/html/cronjobs/temp_hum_save.py

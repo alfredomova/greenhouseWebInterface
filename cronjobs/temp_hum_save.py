@@ -14,15 +14,15 @@ client = MongoClient("mongodb://10.1.10.100:27017")
 
 db = client['greenhouse']
 
-content = urllib2.urlopen("http://localhost/php/bmp085.php").read()
+content = urllib2.urlopen("http://localhost/php/temp_hum.php").read()
 
 d = json.loads(content)
 
 # save current temp / press
 
-result = db.sensor_bmp085.insert_one({
+result = db.sensor_dht22.insert_one({
                 "temperature" : d["temperature"]["C"],
-                "pressure" : d["hpa"],
+                "humidity" : d["humidity"],
                 "date" : datetime.now()
         })
 
@@ -32,6 +32,6 @@ three_mon_rel = relativedelta(months=3)
 
 threeMothsAgo = (datetime.now() - three_mon_rel)
 
-db.sensor_bmp085.remove({
+db.sensor_dht22.remove({
                 "date" : {"$lt" : threeMothsAgo }
         })
