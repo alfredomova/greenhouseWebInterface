@@ -85,13 +85,16 @@ function loadTempHum(){
 		dataType: 'json',
 		success: function(data){
 			var temp  = "";
+			var temp_s  = "";
 			if(tempMode == 'C'){
-				temp = data.temperature + '°C';
+				temp = data.temperature.C;
+				temp_s = parseFloat(data.temperature.C).toFixed(2) + '°C';
 			} else {
-				temp = (((data.temperature * 9 ) / 5) + 32) + '°F';
+				temp = data.temperature.F;
+				temp_s = parseFloat(data.temperature.F).toFixed(2) + '°F';
 			}
-			$('#progressTemp').css('width', data.temperature +'%').attr('aria-valuenow', data.temperature).html(temp);
-			$('#progressHum').css('width', data.humidity +'%').attr('aria-valuenow', data.humidity).html(data.humidity + '%');
+			$('#progressTemp').css('width', temp +'%').attr('aria-valuenow', temp).html(temp_s);
+			$('#progressHum').css('width', data.humidity +'%').attr('aria-valuenow', data.humidity).html(parseFloat(data.humidity).toFixed(2) + '%');
 		}
 	});	
 	
