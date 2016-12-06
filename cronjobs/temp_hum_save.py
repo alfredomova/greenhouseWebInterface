@@ -14,7 +14,7 @@ client = MongoClient("mongodb://10.1.10.100:27017")
 
 db = client['greenhouse']
 
-content = urllib2.urlopen("http://localhost/php/temp_hum.php").read()
+content = urllib2.urlopen("http://localhost/php/dht22.php").read()
 
 d = json.loads(content)
 

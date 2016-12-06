@@ -81,7 +81,7 @@ $( document ).ready(function() {
 /** retrive temperature & humidity */
 function loadTempHum(){
 	$.ajax({
-		url: 'php/temp_hum.php',
+		url: 'php/dht22.php',
 		dataType: 'json',
 		success: function(data){
 			var temp  = "";
