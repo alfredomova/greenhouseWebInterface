@@ -9,7 +9,8 @@ Frameworks/APIs used:
   - jQuery : https://jquery.com
   - jqPlot : http://www.jqplot.com
   - Adafruit Python DHT Sensor Library : https://github.com/adafruit/Adafruit_Python_DHT
-
+  - Pymongo : http://api.mongodb.com/python/2.2/index.html
+  
 Sensors used:
   - DHT22 Temperature Sensor : https://www.adafruit.com/product/385
   - BMP180 Barometric Pressure Sensor : https://www.sparkfun.com/products/11824
