@@ -149,8 +149,11 @@ function loadSwitchStates(){
 
 }
 
-/** */
+/** Generate last 3 months graphs. */
 function loadGraphs(){
+
+	$('#chart_temp').html("");
+	$('#chart_hum').html("");
 
 	$.ajax({
 		url: "php/dht22_history.php",
