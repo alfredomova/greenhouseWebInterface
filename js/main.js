@@ -78,6 +78,10 @@ $( document ).ready(function() {
 	
 	loadGraphs();
 
+	window.setInterval(function(){
+		loadGraphs();
+	}, 300000);
+
 });
 
 /** retrive temperature & humidity */
@@ -206,6 +210,7 @@ function loadGraphs(){
 function refresh(){
 	loadTempHum();
 	loadSwitchStates();
+	loadGraphs();
 }
 
 
