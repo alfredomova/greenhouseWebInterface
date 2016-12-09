@@ -11,6 +11,8 @@ $.getJSON("config.json", function(json) {
 /** wait for fully loaded */
 $( document ).ready(function() {
 
+    $.jqplot.config.enablePlugins = true;
+
 	/** bootstrap switch */
 	$("#checkFan").bootstrapSwitch();
 	$("#checkWaterPump").bootstrapSwitch();
@@ -160,49 +162,97 @@ function loadGraphs(){
 		dataType: 'json',
        crossDomain: true,
 		success: function(raw){
-			var data_mongo = raw.rows;
 			
-			var data = [[]];
-			$.each(data_mongo, function(index, item) {
-				var ttt = item.date.$date.split('T');
-				data[0].push([index, item.temperature]);
-			});
+			var data_temp = [[]];
+			var data_hum = [[]];
 			
-			var plot1 = $.jqplot('chart_temp', data, {
-				title:'Temperature',
-				axes:{
-					xaxis:{
-						renderer:$.jqplot.DateAxisRenderer
-					}
+			$.each(raw.rows, function(index, item) {
+				
+				if (item['date'] != undefined && item.date['$date'] != undefined && index < 144){
+					var t = item.date.$date.split('T');
+					var y = t[1].split('.');
+					data_temp[0].push([t[0] + ' ' + y[0], item.temperature]);
+					data_hum[0].push([t[0] + ' ' + y[0], item.humidity]);
 				}
+				
+				
 			});
+						
+			var plot_temp = $.jqplot('chart_temp', data_temp, 
+				{
+					title:'Temperature',
+					axes:{
+						xaxis:{          
+							renderer:$.jqplot.DateAxisRenderer, 
+							rendererOptions: {
+								tickInset: 0
+							},
+							tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+							tickInterval:'60 minutes',
+							tickOptions:{ 
+								fontSize:'10pt', 
+								fontFamily:'Tahoma', 
+								formatString:'%H:%M',
+								angle: -40
+							}
+						},
+						yaxis: {
+							tickOptions:{
+								prefix: 'º'
+							}
+						}
+					},
+					seriesDefaults:{
+						linePattern: 'dotted',
+						showMarker: false,
+						shadow: false
+					},
+					series:[{
+						lineWidth:3
+					}], 
+					cursor:{
+						show: true, 
+						zoom: true
+					} 
+				});
 			
-		}
-	});	
-	
-	// ***********************************************************
-	
-	$.ajax({
-		url: "php/dht22_history.php",
-		dataType: 'json',
-       crossDomain: true,
-		success: function(raw){
-			var data_mongo = raw.rows;
-			
-			var data = [[]];
-			$.each(data_mongo, function(index, item) {
-				var ttt = item.date.$date.split('T');
-				data[0].push([index, item.humidity]);
-			});
-			
-			var plot1 = $.jqplot('chart_hum', data, {
-				title:'Humidity',
-				axes:{
-					xaxis:{
-						renderer:$.jqplot.DateAxisRenderer
-					}
-				}
-			});
+			var plot_hum = $.jqplot('chart_hum', data_hum, 
+			{
+					title:'Humidity',
+					axes:{
+						xaxis:{          
+							renderer:$.jqplot.DateAxisRenderer, 
+							rendererOptions: {
+								tickInset: 0
+							},
+							tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+							tickInterval:'60 minutes',
+							tickOptions:{ 
+								fontSize:'10pt', 
+								fontFamily:'Tahoma', 
+								formatString:'%H:%M',
+								angle: -40
+							}
+						},
+						yaxis: {
+							tickOptions:{
+								prefix: 'º'
+							}
+						}
+					},
+					seriesDefaults:{
+						linePattern: 'dotted',
+						showMarker: false,
+						shadow: false
+					},
+					series:[{
+						lineWidth:3
+					}], 
+					cursor:{
+						show: true, 
+						zoom: true
+					} 
+				});
 			
 		}
 	});	
