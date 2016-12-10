@@ -7,7 +7,7 @@ Frameworks/APIs used:
   - Bootstrap : http://getbootstrap.com
   - Bootstrap Switch : http://www.bootstrap-switch.org
   - jQuery : https://jquery.com
-  - jqPlot : http://www.jqplot.com
+  - jqPlot : http://www.jqplot.com (this library is AWESOME!!)
   - Adafruit Python DHT Sensor Library : https://github.com/adafruit/Adafruit_Python_DHT
   - Pymongo : http://api.mongodb.com/python/2.2/index.html
   
