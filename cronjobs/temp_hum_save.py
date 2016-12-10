@@ -26,6 +26,17 @@ result = db.sensor_dht22.insert_one({
                 "date" : datetime.now()
         })
 
+# - - - - - - - - - - -
+
+if d["temperature"]["C"] > 30:
+	state = "0" # 0 is ON
+else:
+	state = "1" # 1 is OFF
+
+urllib2.urlopen("http://localhost/php/change_state.php?pin=22&state=" + state ).read()
+
+# - - - - - - - - - - -
+
 # delete older than 3 months
 
 three_mon_rel = relativedelta(months=3)

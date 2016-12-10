@@ -168,7 +168,7 @@ function loadGraphs(){
 			
 			$.each(raw.rows, function(index, item) {
 				
-				if (item['date'] != undefined && item.date['$date'] != undefined && index < 144){
+				if (item['date'] != undefined && item.date['$date'] != undefined){
 					var t = item.date.$date.split('T');
 					var y = t[1].split('.');
 					data_temp[0].push([t[0] + ' ' + y[0], item.temperature]);
@@ -188,17 +188,16 @@ function loadGraphs(){
 								tickInset: 0
 							},
 							tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-							tickInterval:'60 minutes',
 							tickOptions:{ 
 								fontSize:'10pt', 
 								fontFamily:'Tahoma', 
-								formatString:'%H:%M',
-								angle: -40
+								formatString:'%d/%m/%Y %H:%M',
+								angle: -70
 							}
 						},
 						yaxis: {
+							label:'ºC',
 							tickOptions:{
-								prefix: 'º'
 							}
 						}
 					},
@@ -208,7 +207,7 @@ function loadGraphs(){
 						shadow: false
 					},
 					series:[{
-						lineWidth:3
+						lineWidth: 2
 					}], 
 					cursor:{
 						show: true, 
@@ -226,17 +225,16 @@ function loadGraphs(){
 								tickInset: 0
 							},
 							tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-							tickInterval:'60 minutes',
 							tickOptions:{ 
 								fontSize:'10pt', 
 								fontFamily:'Tahoma', 
-								formatString:'%H:%M',
-								angle: -40
+								formatString:'%d/%m/%Y %H:%M',
+								angle: -70
 							}
 						},
 						yaxis: {
+							label:'%',
 							tickOptions:{
-								prefix: 'º'
 							}
 						}
 					},
@@ -246,7 +244,7 @@ function loadGraphs(){
 						shadow: false
 					},
 					series:[{
-						lineWidth:3
+						lineWidth: 2
 					}], 
 					cursor:{
 						show: true, 
