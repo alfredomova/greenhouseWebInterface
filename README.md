@@ -1,6 +1,6 @@
 # Greenhouse Web Interface
 
-Web interface to control Fan, Water pump and Lights in a greenhouse, also to check temperature, barometric pressure & humidity.
+Web interface to control Fan, Water pump and Lights in a greenhouse, also to check temperature, barometric pressure & humidity, this data is stored in a Mongo database (https://www.mongodb.com/). All this running on a Raspberry Pi (https://www.raspberrypi.org/).
 
 Frameworks/APIs used:
   - WebIOPi : http://webiopi.trouch.com/
