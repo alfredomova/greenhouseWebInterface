@@ -11,6 +11,8 @@ Frameworks/APIs used:
   - Adafruit Python DHT Sensor Library : https://github.com/adafruit/Adafruit_Python_DHT
   - Pymongo : http://api.mongodb.com/python/2.2/index.html
   
+  to manage when to turn on/off the sprinklers, I'm using GCalCron https://github.com/fabriceb/gcalcron, wich let you edit your cronjobs throw google calendar,
+  
 Sensors used:
   - DHT22 Temperature Sensor : https://www.adafruit.com/product/385
   - BMP180 Barometric Pressure Sensor : https://www.sparkfun.com/products/11824
